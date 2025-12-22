@@ -23,7 +23,7 @@ class MemeMatcher:
         self.LEFT_BROW = [70, 63, 105, 66, 107]
         self.RIGHT_BROW = [336, 296, 334, 293, 300]
         
-        self.data = []
+        self.database = []
 
     # gets landmark data and stores it in numpy array
     def get_landmarks(self, image):
