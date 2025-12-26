@@ -1,9 +1,9 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+from scipy.spatial import distance as dist
 import os
 import glob
-from scipy.spatial import distance as dist
 
 class MemeMatcher:
     # initializes landmarks
@@ -66,6 +66,7 @@ class MemeMatcher:
         print("Initializing database...")
         image_paths = glob.glob(os.path.join(folder_path, "*.*"))
         
+        # goes through each image in the folder
         for path in image_paths:
             img = cv2.imread(path)
             if img is None: continue
@@ -73,6 +74,7 @@ class MemeMatcher:
             landmarks = self.get_landmarks(img)
             features = self.calculate_features(landmarks)
             
+            # if the image contains geometric features, the image is added to the database
             if features:
                 self.database.append({
                     "path": path,

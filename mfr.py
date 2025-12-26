@@ -1,15 +1,16 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+from scipy.spatial import distance as dist
 import os
 import glob
-from scipy.spatial import distance as dist
+
 from meme_matcher import MemeMatcher
 
 # main loop to match facial features
 matcher = MemeMatcher()
 matcher.init_database("memes")
-cam = cv2.VideoCapture(1)   # 1 is the laptop webcam
+cam = cv2.VideoCapture(1)   # 1 is the mac webcam
 
 while True:
     ret, frame = cam.read()
@@ -24,7 +25,7 @@ while True:
     display_frame = cv2.resize(frame, (1280, 720))
     
     if match_img is not None:
-        match_resized = cv2.resize(match_img, (1280, 720))
+        match_resized = cv2.resize(match_img, (1280, 720))   # numbers are resolution dimensions
         combined = np.hstack((display_frame, match_resized))
     else: combined = display_frame
     
