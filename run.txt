@@ -1,2 +1,9 @@
 command to run the program:
     ./recognition.venv/bin/python mfr.py
+
+commands to install libraries in venv:
+    source recognition.venv/bin/activate
+    ./recognition.venv/bin/python -m pip install "numpy<2.0" opencv-python scipy mediapipe-silicon
+    ./recognition.venv/bin/pip uninstall numpy opencv-python -y
+    ./recognition.venv/bin/pip install "numpy==1.26.4" "opencv-python==4.8.0.76"
+    export OPENBLAS_NUM_THREADS=1
